@@ -4,7 +4,7 @@ import { Newsletter } from "./newsletter"
 const Footer = () => {
 
     return (
-        <div className="bg-15s-lightblue p-5 space-y-5 pb-24">
+        <footer className="bg-15s-lightblue p-5 space-y-5 pb-0">
             <h2 className="font-bold text-xl">La newsletter de 15 secondes TV</h2>
             <p className="text-sm">Inscrivez-vous pour recevoir prochainement le meilleur de 15 secondes TV ! Les vidéos, les programmes, les rendez-vous, mais surtout tout ce qu'il ne faut pas manque de l'Île-de-France...</p>
 
@@ -33,7 +33,7 @@ const Footer = () => {
                     <a href="#">Crédits</a>
                 </div>
             </div>
-        </div>
+        </footer>
     )
 }
 
