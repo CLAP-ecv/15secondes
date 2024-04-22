@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/src/components/ui/navbar";
 import { Tabbar } from "@/src/components/ui/tabbar";
 import { Footer } from "@/src/components/ui/footer";
+import { cn } from "@/src/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -59,7 +60,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={cn(inter.className, "mb-[calc(var(--footer-height)+var(--footer-height)/2)]")}>
         <Navbar />
         {children}
         <Footer />
