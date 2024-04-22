@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/src/components/ui/navbar";
+import { Tabbar } from "@/src/components/ui/tabbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -60,6 +61,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         {children}
+        <Tabbar />
       </body>
     </html>
   );

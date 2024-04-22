@@ -4,6 +4,7 @@
 
 :root {
   --header-height: 60px;
+  --footer-height: 60px;
 }
 
 @layer utilities {
