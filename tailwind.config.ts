@@ -19,7 +19,10 @@ const config = {
     },
     extend: {
       colors: {
-        "15s-blue": "#4742FF"
+        "15s-blue": "#4742FF",
+        "15s-lightblue": "#EFF4F6",
+        "15s-black": "#212529",
+        "15s-lightgrey": "#6C757D",
       },
       keyframes: {
         "accordion-down": {
