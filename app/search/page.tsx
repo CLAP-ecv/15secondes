@@ -27,6 +27,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Recor
             <ul className="space-y-5">
                 {filteredArticles.map((article) => (
                     <ArticleVideoCard
+                        key={article.id}
                         article={article}
                         variant="no-date"
                     />

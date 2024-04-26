@@ -26,7 +26,7 @@ export default async function Home() {
         <ArticleVideoCard variant="large" textColor="white" article={newArticles[0]} />
         {
           newArticles.slice(1).map((article) => (
-            <ArticleVideoCard variant="small" textColor="white" article={article} />
+            <ArticleVideoCard key={article.id} variant="small" textColor="white" article={article} />
           ))
         }
         <Button className="self-center bg-white hover:bg-white/90 text-black" size="lg">
