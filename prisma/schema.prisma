@@ -7,6 +7,13 @@ datasource db {
     url = "file:./dev.db"
 }
 
-model Test {
+model Article {
     id Int @id @default(autoincrement())
+    title String
+    content String
+    thumbnail String?
+    video String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime? @updatedAt
+    author String
 }

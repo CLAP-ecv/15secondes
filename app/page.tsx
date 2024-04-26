@@ -10,8 +10,12 @@ const article = {
 export default async function Home() {
 
   const prisma = new PrismaClient()
-  const tests = await prisma.test.findMany();
-
+  const newArticles = await prisma.article.findMany({
+    take: 4,
+    orderBy: {
+      createdAt: 'desc'
+    }
+  })
 
   return (
     <main className="">
@@ -20,10 +24,12 @@ export default async function Home() {
       </Button>
       <section className="bg-15s-blue p-5 flex flex-col gap-6">
         <h1 className="text-white font-bold text-xl">Les dernières actus en Ile-de-France</h1>
-        <ArticleVideoCard variant="large" textColor="white" article={article} />
-        <ArticleVideoCard variant="small" textColor="white" article={article} />
-        <ArticleVideoCard variant="small" textColor="white" article={article} />
-        <ArticleVideoCard variant="small" textColor="white" article={article} />
+        <ArticleVideoCard variant="large" textColor="white" article={newArticles[0]} />
+        {
+          newArticles.slice(1).map((article) => (
+            <ArticleVideoCard variant="small" textColor="white" article={article} />
+          ))
+        }
         <Button className="self-center bg-white hover:bg-white/90 text-black" size="lg">
           Toutes les vidéos
         </Button>
