@@ -1,6 +1,6 @@
 import { ArticleVideoCard } from "@/src/components/ArticleVideoCard/ArticleVideoCard";
 import { Button } from "@/src/components/ui/button";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "./layout";
 
 const article = {
   title: "Un plan d’urgence pour le 93 : les enseignants manifestent à Paris",
@@ -9,7 +9,6 @@ const article = {
 
 export default async function Home() {
 
-  const prisma = new PrismaClient()
   const newArticles = await prisma.article.findMany({
     take: 4,
     orderBy: {

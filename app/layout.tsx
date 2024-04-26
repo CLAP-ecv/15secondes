@@ -5,6 +5,7 @@ import { Navbar } from "@/src/components/ui/navbar";
 import { Tabbar } from "@/src/components/ui/tabbar";
 import { Footer } from "@/src/components/ui/footer";
 import { cn } from "@/src/lib/utils";
+import { PrismaClient } from "@prisma/client";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,6 +53,9 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: "#FFFFFF",
 };
+
+
+export const prisma = new PrismaClient();
 
 export default function RootLayout({
   children,

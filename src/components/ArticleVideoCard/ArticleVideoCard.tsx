@@ -5,7 +5,7 @@ import { Article } from "@prisma/client"
 import { dateParser } from "@/src/lib/dateParser"
 
 export type ArticleVideoCardProps = {
-    variant: "small" | "large",
+    variant: "small" | "large" | "no-date",
     textColor?: "white" | "black"
     article: Article
 }
@@ -39,7 +39,9 @@ export const ArticleVideoCard = (props: ArticleVideoCardProps) => {
                 className="object-cover w-full h-[200px] rounded-lg"
                 height={200}
             />
-            <p className={cn("text-sm", props.textColor === "white" && "text-white")}>15 SECONDES TV {dateParser(props.article.createdAt)}</p>
+            {props.variant !== "no-date" &&
+                <p className={cn("text-sm", props.textColor === "white" && "text-white")}>15 SECONDES TV {dateParser(props.article.createdAt)}</p>
+            }
             <h2 className={cn("font-bold", props.textColor === "white" && "text-white")}>
                 {props.article.title}
             </h2>
