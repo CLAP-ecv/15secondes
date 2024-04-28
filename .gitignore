@@ -37,4 +37,5 @@ next-env.d.ts
 
 .vscode
 
-public/sw.js.map
+public/*.js.map
+prisma/dev.db
