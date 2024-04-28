@@ -3,7 +3,9 @@ import { prisma } from "../layout";
 import { ArticleVideoCard } from "@/src/components/ArticleVideoCard/ArticleVideoCard";
 
 const searchParamsCache = createSearchParamsCache({
-    q: parseAsString.withDefault('')
+    q: parseAsString.withDefault('').withOptions({
+        clearOnDefault: true
+    })
 })
 
 export type SearchPageProps = {
@@ -16,14 +18,14 @@ export default async function SearchPage({ searchParams }: { searchParams: Recor
     const filteredArticles = await prisma.article.findMany({
         where: {
             title: {
-                contains: q
+                contains: Buffer.from(q, "ascii").toString()
             }
         }
     })
 
     return (
         <main className="p-5">
-            <h1 className="font-bold text-lg">Résultat(s) de recherche pour : <br /><q>{q}</q></h1>
+            <h1 className="font-bold text-lg">Résultat(s) de recherche pour : <br /><q>{Buffer.from(q, "ascii").toString()}</q></h1>
             <ul className="space-y-5">
                 {filteredArticles.map((article) => (
                     <ArticleVideoCard

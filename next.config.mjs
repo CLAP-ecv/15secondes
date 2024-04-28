@@ -6,4 +6,13 @@ const withPWA = withPWAInit({
 
 export default withPWA({
   // Your Next.js config
+  images: {
+    remotePatterns: [
+      {
+        hostname: "www.20minutes.tv",
+        pathname: "**",
+        protocol: "https"
+      }
+    ]
+  }
 });

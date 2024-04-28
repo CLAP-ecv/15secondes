@@ -10,7 +10,9 @@ export type ArticleVideoCardProps = {
     article: Article
 }
 
-export const ArticleVideoCard = (props: ArticleVideoCardProps) => {
+export const ArticleVideoCard = (props: ArticleVideoCardProps) => { 
+
+    if (!props.article) return "Aucun article trouvé"
 
     if (props.variant === "small") {
         return (
@@ -18,12 +20,13 @@ export const ArticleVideoCard = (props: ArticleVideoCardProps) => {
                 <Image
                     src={props.article.thumbnail ?? DefaultArticleImage}
                     alt="image de l'article"
-                    className="object-cover w-1/2 h-[100px] rounded-lg"
-                    height={200}
+                    className="flex-1 object-cover h-[100px] w-auto rounded-lg"
+                    height={100}
+                    width={global?.window ? window.innerWidth / 2 : 400}
                 />
-                <div className="flex flex-col justify-between h-full">
+                <div className="flex-1 flex flex-col justify-between h-full">
                     <p className={cn("text-sm", props.textColor === "white" && "text-white")}>15 SECONDES TV {dateParser(props.article.createdAt)}</p>
-                    <h2 className={cn("font-bold text-ellipsis", props.textColor === "white" && "text-white")}>
+                    <h2 className={cn("font-bold text-ellipsis line-clamp-2", props.textColor === "white" && "text-white")}>
                         {props.article.title}
                     </h2>
                 </div>
@@ -38,6 +41,8 @@ export const ArticleVideoCard = (props: ArticleVideoCardProps) => {
                 alt="image de l'article"
                 className="object-cover w-full h-[200px] rounded-lg"
                 height={200}
+                width={global?.window ? window.innerWidth : 800}
+                priority
             />
             {props.variant !== "no-date" &&
                 <p className={cn("text-sm", props.textColor === "white" && "text-white")}>15 SECONDES TV {dateParser(props.article.createdAt)}</p>

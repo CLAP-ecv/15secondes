@@ -1,11 +1,7 @@
 import { ArticleVideoCard } from "@/src/components/ArticleVideoCard/ArticleVideoCard";
 import { Button } from "@/src/components/ui/button";
+import { Suspense } from "react";
 import { prisma } from "./layout";
-
-const article = {
-  title: "Un plan d’urgence pour le 93 : les enseignants manifestent à Paris",
-  date: "02/04/2024 à 16h35",
-}
 
 export default async function Home() {
 
@@ -23,12 +19,14 @@ export default async function Home() {
       </Button>
       <section className="bg-15s-blue p-5 flex flex-col gap-6">
         <h1 className="text-white font-bold text-xl">Les dernières actus en Ile-de-France</h1>
-        <ArticleVideoCard variant="large" textColor="white" article={newArticles[0]} />
-        {
-          newArticles.slice(1).map((article) => (
-            <ArticleVideoCard key={article.id} variant="small" textColor="white" article={article} />
-          ))
-        }
+        <Suspense fallback={<p>Chargement...</p>}>
+          <ArticleVideoCard variant="large" textColor="white" article={newArticles[0]} />
+          {
+            newArticles.slice(1).map((article) => (
+              <ArticleVideoCard key={article.id} variant="small" textColor="white" article={article} />
+            ))
+          }
+        </Suspense>
         <Button className="self-center bg-white hover:bg-white/90 text-black" size="lg">
           Toutes les vidéos
         </Button>
