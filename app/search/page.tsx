@@ -1,28 +1,30 @@
 import { ArticleVideoCard } from "@/src/components/ArticleVideoCard/ArticleVideoCard";
 import { prisma } from "../layout";
 import { Suspense } from "react";
-import { createSearchParamsCache, parseAsString } from "nuqs/server";
+import { createSearchParamsCache, parseAsInteger, parseAsString } from "nuqs/server";
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/src/components/ui/pagination";
 
 const searchParamsCache = createSearchParamsCache({
     q: parseAsString.withDefault('').withOptions({
         clearOnDefault: true,
-    })
+    }),
+    page: parseAsInteger.withDefault(1)
 })
 
 export type SearchPageProps = {
 }
 
-export default async function SearchPage({ searchParams }: { searchParams: { q: string } }) {
-
-
-    const { q } = searchParamsCache.parse(searchParams)
+export default async function SearchPage({ searchParams }: { searchParams: { q: string, page: string } }) {
+    const { q, page } = searchParamsCache.parse(searchParams)
 
     const filteredArticles = await prisma.article.findMany({
         where: {
             title: {
                 contains: q
             }
-        }
+        },
+        take: page * 10,
+        skip: (page - 1) * 10
     })
 
     return (
@@ -39,7 +41,25 @@ export default async function SearchPage({ searchParams }: { searchParams: { q: 
                     ))}
                 </Suspense>
             </ul>
-
+            <Pagination>
+                <PaginationContent>
+                    <PaginationItem>
+                        <PaginationPrevious href="#" />
+                    </PaginationItem>
+                    <PaginationItem>
+                        <PaginationLink href="#">1</PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                        <PaginationEllipsis />
+                    </PaginationItem>
+                    <PaginationItem>
+                        <PaginationLink href="#">3</PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                        <PaginationNext href={""} />
+                    </PaginationItem>
+                </PaginationContent>
+            </Pagination>
         </main>
     )
 }
