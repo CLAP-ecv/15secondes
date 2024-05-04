@@ -3,6 +3,7 @@ import { prisma } from "../layout";
 import { Suspense } from "react";
 import { createSearchParamsCache, parseAsInteger, parseAsString } from "nuqs/server";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/src/components/ui/pagination";
+import { Paginator } from "@/src/components/Paginator/Paginator";
 
 const searchParamsCache = createSearchParamsCache({
     q: parseAsString.withDefault('').withOptions({
@@ -17,13 +18,14 @@ export type SearchPageProps = {
 export default async function SearchPage({ searchParams }: { searchParams: { q: string, page: string } }) {
     const { q, page } = searchParamsCache.parse(searchParams)
 
+    const totalArticles = await prisma.article.count();
     const filteredArticles = await prisma.article.findMany({
         where: {
             title: {
                 contains: q
             }
         },
-        take: page * 10,
+        take: 10,
         skip: (page - 1) * 10
     })
 
@@ -41,25 +43,9 @@ export default async function SearchPage({ searchParams }: { searchParams: { q: 
                     ))}
                 </Suspense>
             </ul>
-            <Pagination>
-                <PaginationContent>
-                    <PaginationItem>
-                        <PaginationPrevious href="#" />
-                    </PaginationItem>
-                    <PaginationItem>
-                        <PaginationLink href="#">1</PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                        <PaginationEllipsis />
-                    </PaginationItem>
-                    <PaginationItem>
-                        <PaginationLink href="#">3</PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                        <PaginationNext href={""} />
-                    </PaginationItem>
-                </PaginationContent>
-            </Pagination>
+            <Suspense>
+                <Paginator lastPage={parseInt((totalArticles/10).toFixed(0))} />
+            </Suspense>
         </main>
     )
 }
