@@ -5,7 +5,7 @@ import { Navbar } from "@/src/components/ui/navbar";
 import { Tabbar } from "@/src/components/ui/tabbar";
 import { Footer } from "@/src/components/ui/footer";
 import { cn } from "@/src/lib/utils";
-import { PrismaClient } from "@prisma/client";
+import prismaClient from "@/src/lib/db";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -55,7 +55,7 @@ export const viewport: Viewport = {
 };
 
 
-export const prisma = new PrismaClient();
+export const prisma = prismaClient
 
 export default function RootLayout({
   children,
