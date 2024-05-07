@@ -8,16 +8,27 @@ export type PaginatorProps = {
     lastPage: number;
 }
 
+
+function getNextPageNumber(actualPage: string | null, lastPage: number) {
+    if (!actualPage) {
+        return 2;
+    }
+    const nextPage = parseInt(actualPage) + 1;
+    return nextPage > lastPage ? lastPage : nextPage;
+}
+
 export const Paginator = (props: PaginatorProps) => {
 
     const [q] = useQueryState("q");
     const [page] = useQueryState("page");
 
+    if (props.lastPage === 0 || props.lastPage === 1) return null;
+
     return (
-        <Pagination>
+        <Pagination className="my-10">
             <PaginationContent>
                 {
-                    page === "1" ? null :
+                    (!page || page === "1") ? null :
                         <PaginationItem>
                             <PaginationPrevious href={`?q=${q}&page=${page ? (parseInt(page) - 1) : 1}`} />
                         </PaginationItem>
@@ -32,9 +43,12 @@ export const Paginator = (props: PaginatorProps) => {
                         </PaginationItem>
                     ))
                 }
-                <PaginationItem>
-                    <PaginationNext href={`?q=${q}&page=${page ? (parseInt(page) + 1) : 1}`} />
-                </PaginationItem>
+                {
+                    page && parseInt(page) === props.lastPage ? null :
+                    <PaginationItem>
+                        <PaginationNext href={`?q=${q}&page=${getNextPageNumber(page, props.lastPage)}`} />
+                    </PaginationItem>
+                }
             </PaginationContent>
         </Pagination>
     )

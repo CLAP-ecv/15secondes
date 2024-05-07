@@ -1,9 +1,8 @@
 import { ArticleVideoCard } from "@/src/components/ArticleVideoCard/ArticleVideoCard";
-import { prisma } from "../layout";
-import { Suspense } from "react";
-import { createSearchParamsCache, parseAsInteger, parseAsString } from "nuqs/server";
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/src/components/ui/pagination";
 import { Paginator } from "@/src/components/Paginator/Paginator";
+import { createSearchParamsCache, parseAsInteger, parseAsString } from "nuqs/server";
+import { Suspense } from "react";
+import { prisma } from "../layout";
 
 const searchParamsCache = createSearchParamsCache({
     q: parseAsString.withDefault('').withOptions({
@@ -16,9 +15,15 @@ export type SearchPageProps = {
 }
 
 export default async function SearchPage({ searchParams }: { searchParams: { q: string, page: string } }) {
-    const { q, page } = searchParamsCache.parse(searchParams)
+    const { q, page } = searchParamsCache.parse(searchParams);
 
-    const totalArticles = await prisma.article.count();
+    const totalArticles = await prisma.article.count({
+        where: {
+            title: {
+                contains: q
+            }
+        }
+    });
     const filteredArticles = await prisma.article.findMany({
         where: {
             title: {
@@ -27,7 +32,7 @@ export default async function SearchPage({ searchParams }: { searchParams: { q: 
         },
         take: 10,
         skip: (page - 1) * 10
-    })
+    });
 
     return (
         <main className="p-5">

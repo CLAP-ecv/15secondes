@@ -1,32 +1,42 @@
 "use client"
 
-import ReactSelect from "react-select"
+import { useState } from "react"
+import { Input } from "../ui/input"
+import { cn } from "@/src/lib/utils"
 
 type AutocompleteProps = {
     options: { label: string, value: string }[]
+    formRef: React.RefObject<HTMLFormElement>
 }
 
 export const Autocomplete = (props: AutocompleteProps) => {
+    const [value, setValue] = useState("")
+
     return (
-        <ReactSelect
-            isSearchable
-            isClearable={false}
-            isLoading={false}
-            placeholder="Rechercher un article"
-            // @ts-ignore
-            options={props.options}
-            classNames={{
-                menuList: () => "bg-black4 hover:[&>div]:bg-blue1 [&>div]:bg-black4 border-blue1 border",
-                valueContainer: () => "bg-black4",
-                dropdownIndicator: () => "bg-black4",
-                indicatorsContainer: () => "bg-black4",
-                indicatorSeparator: () => "!bg-blue1",
-                control: () => "!border-blue1 !rounded-lg !overflow-hidden",
-                singleValue: () => "!text-black",
-                input: () => "!text-black",
-                option: () => "!text-black",
-            }}
-            name="search"
-        />
+        <>
+            <Input
+                name="search"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+            />
+            <ul className={cn(
+                "absolute w-full max-h-56 bg-white overflow-y-auto border rounded-lg p-2 mt-2",
+                !value.length && "hidden"
+            )}>
+                {props.options
+                    .filter((article) => article.value.includes(value))
+                    .map((article) => (
+                        <li
+                            key={article.value}
+                            onClick={() => {setValue(article.value); props.formRef.current?.requestSubmit()}}
+                            className={cn(
+                                "cursor-pointer hover:bg-gray-100 p-2 rounded-lg"
+                            )}
+                        >
+                            {article.label}
+                        </li>
+                    ))}
+            </ul>
+        </>
     )
 }
