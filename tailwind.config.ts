@@ -23,6 +23,7 @@ const config = {
         "15s-lightblue": "#EFF4F6",
         "15s-black": "#212529",
         "15s-lightgrey": "#6C757D",
+        "15s-yellow": "#F1E43A"
       },
       keyframes: {
         "accordion-down": {
