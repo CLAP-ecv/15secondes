@@ -17,3 +17,19 @@ model Article {
     updatedAt DateTime? @updatedAt
     author String
 }
+
+model Event {
+    id Int @id @default(autoincrement())
+    thumbnail String
+    title String
+    description String
+    startDate DateTime
+    endDate DateTime?
+    location String
+    link String
+    category String
+    slug String
+    ownerFirstName String?
+    ownerLastName String?
+    ownerEmail String?
+}
