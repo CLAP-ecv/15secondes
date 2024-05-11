@@ -12,6 +12,11 @@ export default withPWA({
         hostname: "www.20minutes.tv",
         pathname: "**",
         protocol: "https"
+      },
+      {
+        hostname: "via.placeholder.com",
+        pathname: "**",
+        protocol: "https"
       }
     ]
   }

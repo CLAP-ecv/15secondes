@@ -1,4 +1,5 @@
-import { Event } from "@/src/types/event";
+import { dateParser } from "@/src/lib/dateParser";
+import { Event } from "@prisma/client"
 import Image from "next/image"
 import Link from "next/link";
 
@@ -26,10 +27,10 @@ export const EventCard = (props: EventCardProps) => {
             {
                 props.event.endDate ? (
                     <>
-                        du {props.event.startDate} au {props.event.endDate}
+                        du {dateParser(props.event.startDate)} au {dateParser(props.event.endDate)}
                     </>
                 ) : (
-                    <>le {props.event.startDate}</>
+                    <>le {dateParser(props.event.startDate)}</>
                 )
             }
             </span>
@@ -39,7 +40,6 @@ export const EventCard = (props: EventCardProps) => {
         </p>
         <Link href={`/events/${props.event.slug}`} className="underline underline-offset-2">
             Lire la suite
-
         </Link>
     </article>
   )
