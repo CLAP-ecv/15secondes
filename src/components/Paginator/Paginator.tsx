@@ -17,10 +17,25 @@ function getNextPageNumber(actualPage: string | null, lastPage: number) {
     return nextPage > lastPage ? lastPage : nextPage;
 }
 
+function generateHref(q: string | null, page: number | null, month: number | null) {
+    const query = new URLSearchParams();
+    if (q) {
+        query.set("q", q);
+    }
+    if (page) {
+        query.set("page", page+"");
+    }
+    if (month) {
+        query.set("month", month+"");
+    }
+    return "?"+query.toString();
+}
+
 export const Paginator = (props: PaginatorProps) => {
 
     const [q] = useQueryState("q");
     const [page] = useQueryState("page");
+    const [month] = useQueryState("month");
 
     if (props.lastPage === 0 || props.lastPage === 1) return null;
 
@@ -30,7 +45,7 @@ export const Paginator = (props: PaginatorProps) => {
                 {
                     (!page || page === "1") ? null :
                         <PaginationItem>
-                            <PaginationPrevious href={`?q=${q}&page=${page ? (parseInt(page) - 1) : 1}`} />
+                            <PaginationPrevious href={generateHref(q, page ? (parseInt(page) - 1) : 1, month ? parseInt(month) : null)} />
                         </PaginationItem>
                 }
                 {
@@ -39,14 +54,14 @@ export const Paginator = (props: PaginatorProps) => {
                             index + 1 === parseInt(page ?? "1") ? "bg-gray-200" : "bg-white",
                             "border border-gray-200"
                         )}>
-                            <PaginationLink href={`?q=${q}&page=${index + 1}`}>{index + 1}</PaginationLink>
+                            <PaginationLink href={generateHref(q, index + 1, month ? parseInt(month) : null)}>{index + 1}</PaginationLink>
                         </PaginationItem>
                     ))
                 }
                 {
                     page && parseInt(page) === props.lastPage ? null :
                     <PaginationItem>
-                        <PaginationNext href={`?q=${q}&page=${getNextPageNumber(page, props.lastPage)}`} />
+                        <PaginationNext href={generateHref(q, getNextPageNumber(page, props.lastPage), month ? parseInt(month) : null)} />
                     </PaginationItem>
                 }
             </PaginationContent>
