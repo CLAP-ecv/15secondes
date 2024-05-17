@@ -28,7 +28,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
                     .map((article) => (
                         <li
                             key={article.value}
-                            onClick={() => {setValue(article.value); props.formRef.current?.requestSubmit()}}
+                            onClick={() => { setValue(article.value); setTimeout(() => props.formRef.current?.requestSubmit(), 100) }}
                             className={cn(
                                 "cursor-pointer hover:bg-gray-100 p-2 rounded-lg"
                             )}
