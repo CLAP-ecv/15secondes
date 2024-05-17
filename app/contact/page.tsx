@@ -89,7 +89,7 @@ type FormStatusMessageProps = {
 const FormStatusMessage = ( {title, description, titleLink, urlLink}: FormStatusMessageProps) => {
     return (
         <div className="flex flex-col items-center justify-center gap-8 mx-5 my-10">
-            <Image src="/15s.png" alt="Logo 15 secondes" width={150} height={135} />
+            <Image src="/15s.svg" alt="Logo 15 secondes" width={150} height={135} />
             <div className="text-left space-y-4">
                 <h1 className="font-bold text-xl">{ title }</h1>
                 <p>{ description }</p>

@@ -15,7 +15,7 @@ export const Navbar = (props: NavbarProps) => {
 
   return (
     <nav className="flex items-center justify-center bg-white w-full h-[var(--header-height)] rounded-b-lg shadow-lg sticky top-0">
-      <Image src={"/15s.png"} alt="15Secondes" width={50} height={50} className="z-10" />
+      <Image src={"/15s.svg"} alt="15Secondes" width={50} height={50} className="z-10" />
 
       <button onClick={() => setIsSearchBarOpened(!isSearchBarOpened)}>
         {isSearchBarOpened ? (
