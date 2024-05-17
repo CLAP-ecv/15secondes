@@ -6,6 +6,7 @@ import { Tabbar } from "@/src/components/ui/tabbar";
 import { Footer } from "@/src/components/ui/footer";
 import { cn } from "@/src/lib/utils";
 import prismaClient from "@/src/lib/db";
+import { Providers } from "@/src/components/Providers/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -65,10 +66,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(inter.className, "mb-[calc(var(--footer-height)+var(--footer-height)/2)]")}>
-        <Navbar />
-        {children}
-        <Footer />
-        <Tabbar />
+        <Providers>
+          <Navbar />
+          {children}
+          <Footer />
+          <Tabbar />
+        </Providers>
       </body>
     </html>
   );
