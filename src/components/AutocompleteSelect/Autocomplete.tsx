@@ -32,6 +32,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
                             className={cn(
                                 "cursor-pointer hover:bg-gray-100 p-2 rounded-lg"
                             )}
+                            tabIndex={0}
                         >
                             {article.label}
                         </li>
