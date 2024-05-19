@@ -25,6 +25,7 @@ function randDate(after?: Date) {
 
 export async function GET(request: Request) {
     const prisma = new PrismaClient();
+    await prisma.event.deleteMany();
     const importStatus = await prisma.event.createMany({
         data: Array.from({ length: 50 }, (_, i) => {
             const startDate = randDate();
