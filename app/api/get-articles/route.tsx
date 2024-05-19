@@ -10,6 +10,7 @@ export async function GET(request: Request) {
     let jsonObj = parser.parse(xmlText);
 
     const prisma = new PrismaClient();
+    await prisma.article.deleteMany();
     const importStatus = await prisma.article.createMany({
         data: jsonObj.urlset.url.map((articleData: any) => ({
             title: articleData["video:video"]["video:title"],
