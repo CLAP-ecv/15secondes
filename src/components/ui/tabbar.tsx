@@ -12,6 +12,8 @@ import TimesIcon from "@/src/assets/icons/times.svg"
 import Image from "next/image"
 import { useState } from "react"
 import { cn } from "@/src/lib/utils"
+import { dateParser } from "@/src/lib/dateParser"
+import dayjs from "dayjs"
 
 const menuLinks = [
     {
@@ -79,6 +81,8 @@ export const Tabbar = (props: TabbarProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [subMenuLinks, setSubMenuLinks] = useState<typeof menuLinks[0] | undefined>(undefined);
 
+    const thisMonth = dayjs().format("YYYY-MM");
+
     const links = [
         {
             href: "#",
@@ -86,7 +90,7 @@ export const Tabbar = (props: TabbarProps) => {
             label: "Emissions"
         },
         {
-            href: "#",
+            href: `/agenda/${thisMonth}`,
             icon: CalendarIcon,
             label: "Agenda"
         },
