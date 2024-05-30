@@ -187,7 +187,7 @@ const TabbarItem = (props: { href?: string, variant?: string, label: string, ico
 
     return (
         <li className="basis-1/5 flex flex-col items-center justify-center">
-            <Comp href="#" className="flex flex-col items-center justify-between"
+            <Comp href={props.href ?? "#"} className="flex flex-col items-center justify-between"
                 onClick={() => {
                     if (props.variant === "menu") {
                         props.setIsMenuOpen(!props.isMenuOpen)
