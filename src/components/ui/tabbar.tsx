@@ -90,7 +90,7 @@ export const Tabbar = (props: TabbarProps) => {
             label: "Emissions"
         },
         {
-            href: `/agenda/${thisMonth}`,
+            href: `/agenda?month=${thisMonth}`,
             icon: CalendarIcon,
             label: "Agenda"
         },
