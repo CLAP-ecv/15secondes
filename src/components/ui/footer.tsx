@@ -12,7 +12,7 @@ const Footer = () => {
 
             <h2 className="font-bold text-xl text-center">Bienvenue sur 15 secondes TV</h2>
             <p className="text-sm">15 secondes TV c'est le nouveau média de Paris et de l'Île-de-France ! C'est une télé, mais c'est surtout une envie de rapprocher les franciliens... News, sport, culture, good vibes, bien-être, divertissement, planète, économie, sorties... Découvrez vite nos programmes, nos émissions, nos vidéos et nos replays. De l'actu, mais aussi du divertissement, 15 secondes TV c'est des directs quotidiens pour vous proposer le meilleur de Paris, mais surtout de la Seine-et-Marne, des Yvelines, de l'Essone, des Hauts-de-Seine, de la Seine-Saint-Denis, du Val-de-Marne ainsi que du Val-d'Oise.</p>
-            <Image src={"/15s.png"} alt="15Secondes" width={75} height={105} className="mx-auto" />
+            <Image src={"/15s.svg"} alt="15Secondes" width={75} height={105} className="mx-auto" />
 
             <div className="space-y-5 text-sm">
                 <p>15secondes.tv</p>
