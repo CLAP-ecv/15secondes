@@ -5,7 +5,12 @@ import { redirect } from "next/navigation";
 
 export const searchAction = (formData: FormData) => {
 
-    return redirect(`/search?q=${formData.get("search")}&page=1`);
+    const search = formData.get("search");
+    const params = new URLSearchParams();
+    params.append("q", search?.toString() || "");
+    params.append("page", "1");
+    
+    return redirect(`/search?${params}`);
 }
 
 export const getAllArticles = async () => {
