@@ -1,8 +1,10 @@
 import { Paginator } from "@/src/components/Paginator/Paginator"
 import { prisma } from "../layout"
 import { createSearchParamsCache, parseAsInteger, parseAsString } from "nuqs/server";
-import { EventCard } from "@/src/components/EventCard/EventCard";
+import { EventCard } from "@/src/components/Event/EventCard";
 import { MonthPaginator } from "@/src/components/Paginator/MonthPaginator";
+import { EventFilters } from "@/src/components/Event/EventFilters";
+import { EventList } from "@/src/components/Event/EventList";
 
 const searchParamsCache = createSearchParamsCache({
     page: parseAsInteger.withDefault(1),
@@ -35,20 +37,31 @@ export default async function RoutePage({ searchParams }: { searchParams: { mont
         }
     })
 
+    const eventCities = await prisma.event.findMany({
+        select: {
+            location: true,
+        },
+        distinct: ['location']
+    })
+
+    const eventCategories = await prisma.event.findMany({
+        select: {
+            category: true,
+        },
+        distinct: ['category']
+    })
+
+
     return (
         <main className="p-5">
             <MonthPaginator />
-            <ul className="space-y-5">
-                {
-                    events.map((event) => (
-                        <li key={event.id}>
-                            <EventCard
-                                event={event}
-                            />
-                        </li>
-                    ))
-                }
-            </ul>
+            <EventFilters 
+                cities={eventCities.map(event => event.location)}
+                categories={eventCategories.map(event => event.category)}
+            />
+            <EventList 
+                events={events}
+            />
             <Paginator
                 lastPage={parseInt((totalEvents / 10).toFixed(0))}
             />

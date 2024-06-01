@@ -10,6 +10,19 @@ const categories = [
     "Technology"
 ]
 
+const cities = [
+    "Lille",
+    "Paris",
+    "Marseille",
+    "Lyon",
+    "Toulouse",
+    "Nice",
+    "Nantes",
+    "Montpellier",
+    "Strasbourg",
+    "Bordeaux"
+]
+
 function rand(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -23,6 +36,8 @@ function randDate(after?: Date) {
     return new Date(2024, rand(0, 11), rand(1, 28), rand(0, 23), rand(0, 59), rand(0, 59));
 }
 
+
+
 export async function GET(request: Request) {
     const prisma = new PrismaClient();
     await prisma.event.deleteMany();
@@ -35,7 +50,7 @@ export async function GET(request: Request) {
                 description: "lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 startDate: startDate,
                 endDate: rand(0, 1) ? randDate(startDate) : null,
-                location: "Location",
+                location: cities[rand(0, cities.length - 1)],
                 link: "https://www.20minutes.tv",
                 slug: `event-${i}`,
                 thumbnail: "https://via.placeholder.com/300x170"
