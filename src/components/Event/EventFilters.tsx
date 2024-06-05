@@ -42,7 +42,7 @@ export const EventFilters = (props: EventFiltersProps) => {
             {/* @ts-ignore */}
             <SelectItem value={null}>Toutes les catégories</SelectItem>
             {
-              props.categories.map(category => <SelectItem value={category}>{category}</SelectItem>)
+              props.categories.map((category, index) => <SelectItem key={index} value={category}>{category}</SelectItem>)
             }
           </SelectContent>
         </Select>
