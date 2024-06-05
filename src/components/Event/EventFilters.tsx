@@ -26,7 +26,7 @@ export const EventFilters = (props: EventFiltersProps) => {
             {/* @ts-ignore */}
             <SelectItem value={null}>Toutes les villes</SelectItem>
             {
-              props.cities.map(city => <SelectItem value={city}>{city}</SelectItem>)
+              props.cities.map((city, index) => <SelectItem key={index} value={city}>{city}</SelectItem>)
             }
           </SelectContent>
         </Select>
