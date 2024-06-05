@@ -25,9 +25,9 @@ const initOneSignal = () => {
     }
     onesignal.init({
         appId: "9567164b-cb9c-42a5-b14a-a0cf341af31b",
+        safari_web_id: "web.onesignal.auto.1172fa5f-6e39-45ba-9a29-ceb4d8311220",
         notifyButton: {
             enable: true,
         },
-        allowLocalhostAsSecureOrigin: true
     });
 }
