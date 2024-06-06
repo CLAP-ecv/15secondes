@@ -16,15 +16,11 @@ import Link from "next/link";
 import dayjs from "dayjs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/src/components/ui/select";
 import { Label } from "@/src/components/ui/label";
-import { useQueryState } from "nuqs";
 
 const thisMonth = dayjs().format("YYYY-MM");
 
 
 export default function EventProposalPage({ searchParams }: { searchParams: { status: string } }) {
-    const [theme, setTheme] = useQueryState("theme");
-    const [eventCity, setCity] = useQueryState("eventCity");
-
     if (searchParams?.status == "success") {
         return (
             <FormStatusMessage title="Merci pour votre proposition d'évènement !"
@@ -79,7 +75,7 @@ export default function EventProposalPage({ searchParams }: { searchParams: { st
                         <h2 className="text-xl font-bold">Votre évènement</h2>
                         <div>
                             <Label htmlFor="theme">Thématique *</Label>
-                            <Select name="theme" value={theme ?? ""} onValueChange={(value) => setTheme(value)} required>
+                            <Select name="theme" required>
                             <SelectTrigger className="w-full">
                                 <SelectValue placeholder="Sélectionner une thématique" />
                             </SelectTrigger>
@@ -94,7 +90,7 @@ export default function EventProposalPage({ searchParams }: { searchParams: { st
                         <InputWithLabel label="Nom de l’événement *" name="eventName" id="eventName" type="text" placeholder="Concert de Jazz" required />
                         <div>
                             <Label htmlFor="eventCity">Ville de l'évènement</Label>
-                            <Select name="eventCity" value={eventCity ?? ""} onValueChange={(value) => setCity(value)}>
+                            <Select name="eventCity">
                             <SelectTrigger className="w-full">
                                 <SelectValue placeholder="Sélectionner une ville" />
                             </SelectTrigger>
