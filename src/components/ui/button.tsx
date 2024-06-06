@@ -11,7 +11,9 @@ const buttonVariants = cva(
         default:
           "bg-neutral-900 text-neutral-50 shadow hover:bg-neutral-900/90 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-50/90",
         outline:
-          "border border-black bg-white shadow-sm hover:bg-neutral-100 hover:text-neutral-900"
+          "border border-black bg-white shadow-sm hover:bg-neutral-100 hover:text-neutral-900",
+        green:
+          "bg-15s-green text-neutral-50 shadow hover:bg-15s-green/90"
       },
       size: {
         default: "h-9 px-4 py-2",
