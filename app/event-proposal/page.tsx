@@ -21,7 +21,7 @@ import { useQueryState } from "nuqs";
 const thisMonth = dayjs().format("YYYY-MM");
 
 
-export default function ContactPage({ searchParams }: { searchParams: { status: string } }) {
+export default function EventProposalPage({ searchParams }: { searchParams: { status: string } }) {
     const [theme, setTheme] = useQueryState("theme");
     const [eventCity, setCity] = useQueryState("eventCity");
 
