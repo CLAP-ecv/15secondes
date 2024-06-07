@@ -1,16 +1,24 @@
 import { ArticleVideoCard } from "@/src/components/ArticleVideoCard/ArticleVideoCard";
 import { Button } from "@/src/components/ui/button";
+import { Loader } from "@/src/components/ui/loader";
+import { Article } from "@prisma/client";
 import { Suspense } from "react";
 import { prisma } from "./layout";
 
 export default async function Home() {
 
-  const newArticles = await prisma.article.findMany({
-    take: 4,
-    orderBy: {
-      createdAt: 'desc'
-    }
-  })
+  let newArticles = [] as Article[];
+  try {
+    newArticles = await prisma.article.findMany({
+      take: 4,
+      orderBy: {
+        createdAt: 'desc'
+      }
+    })
+  } catch (_) {
+
+  }
+
 
   return (
     <main className="">
@@ -19,7 +27,7 @@ export default async function Home() {
       </Button>
       <section className="bg-15s-blue p-5 flex flex-col gap-6">
         <h1 className="text-white font-bold text-xl">Les dernières actus en Ile-de-France</h1>
-        <Suspense fallback={<p>Chargement...</p>}>
+        <Suspense fallback={<Loader />}>
           <ArticleVideoCard variant="large" textColor="white" article={newArticles[0]} />
           {
             newArticles.slice(1).map((article) => (
