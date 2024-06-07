@@ -41,7 +41,7 @@ export default function EventProposalPage({ searchParams }: { searchParams: { st
                         </BreadcrumbItem>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
-                            <BreadcrumbPage>Agenda</BreadcrumbPage>
+                            <BreadcrumbLink href={`/agenda?month=${dayjs().format("YYYY-MM")}`}>Agenda</BreadcrumbLink>
                         </BreadcrumbItem>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
