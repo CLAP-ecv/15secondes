@@ -29,5 +29,6 @@ const initOneSignal = () => {
         notifyButton: {
             enable: true,
         },
+        allowLocalhostAsSecureOrigin: true,
     });
 }

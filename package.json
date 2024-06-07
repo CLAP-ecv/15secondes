@@ -25,7 +25,6 @@
     "nuqs": "^1.17.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-onesignal": "^3.0.1",
     "react-select": "^5.8.0",
     "react-use": "^17.5.0",
     "tailwind-merge": "^2.3.0",
