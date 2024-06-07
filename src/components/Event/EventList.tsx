@@ -29,7 +29,7 @@ export const EventList = (props: EventListProps) => {
             }
             {
                 eventsToShow.length === 0 && (
-                    <p className="text-center">Aucun événement trouvé</p>
+                    <p className="text-center">Aucun évènement trouvé</p>
                 )
             }
         </ul>
