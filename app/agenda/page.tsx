@@ -61,19 +61,19 @@ export default async function RoutePage({ searchParams }: { searchParams: { mont
                 <b>Agenda</b>
             </h1>
             <div className="flex justify-center mt-6 mb-10">
-            <Button asChild className="relative font-normal" variant={"green"}>
-                <Link href={'/'}>
-                <Image src={AgendaPlus} alt="Proposer votre évènement" width={20} height={20} className="mr-2 inline-block" />
-                    Proposer votre évènement
-                </Link>
-            </Button>
+                <Button asChild className="relative font-normal" variant={"green"}>
+                    <Link href={'/event-proposal'}>
+                        <Image src={AgendaPlus} alt="Proposer votre évènement" width={20} height={20} className="mr-2 inline-block" />
+                        Proposer votre évènement
+                    </Link>
+                </Button>
             </div>
             <MonthPaginator />
-            <EventFilters 
+            <EventFilters
                 cities={eventCities.map(event => event.location)}
                 categories={eventCategories.map(event => event.category)}
             />
-            <EventList 
+            <EventList
                 events={events}
             />
             <Paginator
