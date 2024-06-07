@@ -1,10 +1,13 @@
 import { Paginator } from "@/src/components/Paginator/Paginator"
 import { prisma } from "../layout"
 import { createSearchParamsCache, parseAsInteger, parseAsString } from "nuqs/server";
-import { EventCard } from "@/src/components/Event/EventCard";
 import { MonthPaginator } from "@/src/components/Paginator/MonthPaginator";
 import { EventFilters } from "@/src/components/Event/EventFilters";
 import { EventList } from "@/src/components/Event/EventList";
+import { Button } from "@/src/components/ui/button";
+import Link from "next/link";
+import Image from "next/image"
+import AgendaPlus from "@/src/assets/icons/agenda-plus.svg"
 
 const searchParamsCache = createSearchParamsCache({
     page: parseAsInteger.withDefault(1),
@@ -54,6 +57,17 @@ export default async function RoutePage({ searchParams }: { searchParams: { mont
 
     return (
         <main className="p-5">
+            <h1 className="text-xl">
+                <b>Agenda</b>
+            </h1>
+            <div className="flex justify-center mt-6 mb-10">
+            <Button asChild className="relative font-normal" variant={"green"}>
+                <Link href={'/'}>
+                <Image src={AgendaPlus} alt="Proposer votre évènement" width={20} height={20} className="mr-2 inline-block" />
+                    Proposer votre évènement
+                </Link>
+            </Button>
+            </div>
             <MonthPaginator />
             <EventFilters 
                 cities={eventCities.map(event => event.location)}
