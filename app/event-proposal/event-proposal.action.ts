@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { prisma } from "../layout";
 
-export const eventPropsalAction = async (formData: FormData) => {
+export const eventProposalAction = async (formData: FormData) => {
 
     const imageBuffer = await (formData.get("image") as File).arrayBuffer();
     const imageBase64 = Buffer.from(imageBuffer).toString("base64");

@@ -5,11 +5,11 @@ import { InputWithLabel } from "@/src/components/ui/inputWithLabel"
 import { Label } from "@/src/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/src/components/ui/select"
 import { TextareaWithLabel } from "@/src/components/ui/textareaWithLabel"
-import { eventPropsalAction } from "./event-proposal.action"
+import { eventProposalAction } from "./event-proposal.action"
 
 export default function EventProposalForm() {
     return (
-        <form className="mt-12 mb-10 flex gap-4 flex-col" action={async (formData: FormData) => { eventPropsalAction(formData) }}>
+        <form className="mt-12 mb-10 flex gap-4 flex-col" action={(formData: FormData) => { eventProposalAction(formData) }}>
             <h2 className="text-xl font-bold">Vous</h2>
             <InputWithLabel label="Prénom *" name="firstName" id="firstName" type="text" placeholder="Alex" required />
             <InputWithLabel label="Nom *" name="lastName" id="lastName" type="text" placeholder="Dupont" required />
