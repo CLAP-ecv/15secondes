@@ -68,7 +68,11 @@ const menuLinks = [
     },
     {
         label: "Météo",
-        href: "#"
+        href: "/meteo"
+    },
+    {
+        label: "Info trafic",
+        href: "/info-trafic" 
     }
 ]
 
@@ -85,7 +89,7 @@ export const Tabbar = (props: TabbarProps) => {
 
     const links = [
         {
-            href: "#",
+            href: "/",
             icon: TVIcon,
             label: "Emissions"
         },
@@ -95,13 +99,13 @@ export const Tabbar = (props: TabbarProps) => {
             label: "Agenda"
         },
         {
-            href: "#",
+            href: "/",
             icon: PlayIcon,
             label: "Direct",
             variant: "overflow"
         },
         {
-            href: "#",
+            href: "/contact",
             icon: MessageIcon,
             label: "Contact"
         },
