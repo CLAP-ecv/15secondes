@@ -15,7 +15,7 @@ export const EventFilters = (props: EventFiltersProps) => {
   const [category, setCategory] = useQueryState("category");
 
   return (
-    <section className="py-8 flex flex-row gap-8">
+    <section className="py-8 flex flex-col lg:flex-row gap-8">
       <div>
         <Label htmlFor="city">Ville</Label>
         <Select name="city" value={city ?? ""} onValueChange={(value) => setCity(value)}>

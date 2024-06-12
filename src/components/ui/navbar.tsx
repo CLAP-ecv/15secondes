@@ -15,7 +15,7 @@ export const Navbar = (props: NavbarProps) => {
   const [isSearchBarOpened, setIsSearchBarOpened] = useState(false)
 
   return (
-    <nav className="flex items-center justify-center bg-white w-full h-[var(--header-height)] rounded-b-lg shadow-lg sticky top-0">
+    <nav className="flex items-center justify-center bg-white w-full h-[var(--header-height)] rounded-b-lg shadow-lg sticky top-0 z-50">
       <Link href={"/"}>
         <Image src={"/15s.svg"} alt="15Secondes" width={50} height={50} className="z-10" />
       </Link>
