@@ -91,7 +91,7 @@ export const Tabbar = (props: TabbarProps) => {
         {
             href: "/",
             icon: TVIcon,
-            label: "Emissions"
+            label: "Emission"
         },
         {
             href: `/agenda?month=${thisMonth}`,
