@@ -65,6 +65,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta name="robots" content="noindex"></meta>
       <body className={cn(inter.className, "mb-[calc(var(--footer-height)+var(--footer-height)/2)]")}>
         <Providers>
           <Navbar />
