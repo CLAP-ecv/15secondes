@@ -15,9 +15,14 @@ export default async function Home() {
   try {
     newArticles = await prisma.article.findMany({
       take: 4,
-      orderBy: {
-        createdAt: 'desc'
-      }
+      orderBy: [
+        {
+          createdAt: 'desc'
+        },
+        {
+          id: "desc"
+        }
+      ]
     })
   } catch (_) {
 
