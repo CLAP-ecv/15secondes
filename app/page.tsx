@@ -4,6 +4,7 @@ import { Loader } from "@/src/components/ui/loader";
 import { Article } from "@prisma/client";
 import { Suspense } from "react";
 import { prisma } from "./layout";
+import Link from "next/link";
 
 /**
  * Renders the home page component.
@@ -44,8 +45,10 @@ export default async function Home() {
             ))
           }
         </Suspense>
-        <Button className="self-center bg-white hover:bg-white/90 text-black" size="lg">
+        <Button asChild className="self-center bg-white hover:bg-white/90 text-black" size="lg">
+        <Link href={"/search"}>
           Toutes les vidéos
+        </Link>
         </Button>
       </section>
     </main>
