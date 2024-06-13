@@ -84,7 +84,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <meta name="robots" content="noindex"></meta>
       <body className={cn(inter.className, "mb-[calc(var(--footer-height)+var(--footer-height)/2)]")}>
         <Providers>
