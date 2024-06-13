@@ -5,6 +5,10 @@ import { Article } from "@prisma/client";
 import { Suspense } from "react";
 import { prisma } from "./layout";
 
+/**
+ * Renders the home page component.
+ * @returns The JSX element representing the home page.
+ */
 export default async function Home() {
 
   let newArticles = [] as Article[];

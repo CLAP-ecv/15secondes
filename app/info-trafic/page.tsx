@@ -1,5 +1,9 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/src/components/ui/breadcrumb";
 
+/**
+ * Renders the TraficPage component.
+ * This component displays real-time traffic conditions and fuel prices.
+ */
 export default function TraficPage() {
 
     return (

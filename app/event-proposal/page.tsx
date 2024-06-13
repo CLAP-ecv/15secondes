@@ -1,19 +1,23 @@
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from "@/src/components/ui/breadcrumb";
-import dayjs from "dayjs";
-import Image from "next/image";
-import Link from "next/link";
-import EventProposalForm from "./EventProposalForm";
+import Image from "next/image"
+import EventProposalForm from "./EventProposalForm"
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/src/components/ui/breadcrumb"
+import dayjs from "dayjs"
+import "dayjs/locale/fr"
+import Link from "next/link"
+
+dayjs.locale("fr")
 
 const thisMonth = dayjs().format("YYYY-MM");
 
-
+/**
+ * Renders the Event Proposal Page component.
+ * 
+ * @param {Object} props - The component props.
+ * @param {Object} props.searchParams - The search parameters.
+ * @param {string} props.searchParams.status - The status of the search.
+ * 
+ * @returns {JSX.Element} The rendered Event Proposal Page component.
+ */
 export default function EventProposalPage({ searchParams }: { searchParams: { status: string } }) {
     if (searchParams?.status == "success") {
         return (
@@ -75,6 +79,17 @@ type FormStatusMessageProps = {
     urlLink: string
 }
 
+/**
+ * Renders the Form Status Message component.
+ * 
+ * @param {Object} props - The component props.
+ * @param {string} props.title - The title of the message.
+ * @param {string} props.description - The description of the message.
+ * @param {string} props.titleLink - The title of the link.
+ * @param {string} props.urlLink - The URL of the link.
+ * 
+ * @returns {JSX.Element} The rendered Form Status Message component.
+ */
 const FormStatusMessage = ({ title, description, titleLink, urlLink }: FormStatusMessageProps) => {
     return (
         <div className="flex flex-col items-center justify-center gap-8 mx-5 my-10">

@@ -3,6 +3,11 @@
 import { redirect } from "next/navigation";
 import { prisma } from "../layout";
 
+/**
+ * Handles the event proposal form submission.
+ * @param formData - The form data.
+ * @returns The redirect action.
+ */
 export const eventProposalAction = async (formData: FormData) => {
 
     const imageBuffer = await (formData.get("image") as File).arrayBuffer();

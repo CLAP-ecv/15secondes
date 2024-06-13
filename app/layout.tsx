@@ -1,3 +1,9 @@
+/**
+ * @fileoverview This file contains the layout component for the application.
+ * It exports the `RootLayout` component which wraps the entire application content.
+ * The layout includes a navbar, footer, and tabbar.
+ */
+
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -15,6 +21,9 @@ const APP_DEFAULT_TITLE = "15Secondes";
 const APP_TITLE_TEMPLATE = "%s - 15Secondes";
 const APP_DESCRIPTION = "Best PWA app in the world!";
 
+/**
+ * The metadata for the application.
+ */
 export const metadata: Metadata = {
   applicationName: APP_NAME,
   title: {
@@ -51,13 +60,24 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * The viewport configuration for the application.
+ */
 export const viewport: Viewport = {
   themeColor: "#FFFFFF",
 };
 
+/**
+ * The Prisma client instance.
+ */
+export const prisma = prismaClient;
 
-export const prisma = prismaClient
-
+/**
+ * The root layout component that wraps the entire application content.
+ * It includes a navbar, footer, and tabbar.
+ * @param children - The child components to be rendered within the layout.
+ * @returns The rendered layout component.
+ */
 export default function RootLayout({
   children,
 }: Readonly<{

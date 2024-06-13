@@ -10,6 +10,11 @@ import Image from "next/image";
 import ContactForm from "./ContactForm";
 
 
+/**
+ * Renders the Contact page component.
+ * @param searchParams - The search parameters containing the status.
+ * @returns The Contact page component.
+ */
 export default function ContactPage({ searchParams }: { searchParams: { status: string} }) {
 
     if (searchParams?.status == "success") {
@@ -65,6 +70,9 @@ export default function ContactPage({ searchParams }: { searchParams: { status: 
     }
 }
 
+/**
+ * Props for the FormStatusMessage component.
+ */
 type FormStatusMessageProps = {
     title: string,
     description: string,
@@ -72,6 +80,14 @@ type FormStatusMessageProps = {
     urlLink: string
 }
 
+/**
+ * Renders the form status message component.
+ * @param title - The title of the message.
+ * @param description - The description of the message.
+ * @param titleLink - The title of the link.
+ * @param urlLink - The URL of the link.
+ * @returns The form status message component.
+ */
 const FormStatusMessage = ( {title, description, titleLink, urlLink}: FormStatusMessageProps) => {
     return (
         <div className="flex flex-col items-center justify-center gap-8 mx-5 my-10">

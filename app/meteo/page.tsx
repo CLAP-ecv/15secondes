@@ -8,7 +8,11 @@ import {
 } from "@/src/components/ui/breadcrumb"
 import { InputWithLabel } from "@/src/components/ui/inputWithLabel"
 
-
+/**
+ * Renders the contact page with weather forecast and input fields.
+ * @param searchParams - The search parameters for the weather forecast.
+ * @returns The rendered contact page.
+ */
 export default function ContactPage({ searchParams }: { searchParams: { status: string } }) {
     return (
         <>
@@ -28,7 +32,7 @@ export default function ContactPage({ searchParams }: { searchParams: { status: 
                     Prévisions météo Paris et l'Île-de-France
                 </h1>
                 <p className="mt-8">
-                    Retrouvez sur cette page nos prévisions météo pour les prochains jours, notre bulletin météo vidéo quotidien, et même le weekend
+                    Retrouvez sur cette page nos prévisions météo pour les prochains jours, notre bulletin météo vidéo quotidien, et même le weekend
                 </p>
                 <h2 className="mt-5 text-xl font-bold">
                     Le bulletin météo

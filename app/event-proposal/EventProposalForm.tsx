@@ -7,6 +7,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { TextareaWithLabel } from "@/src/components/ui/textareaWithLabel"
 import { eventProposalAction } from "./event-proposal.action"
 
+/**
+ * Renders the event proposal form.
+ */
 export default function EventProposalForm() {
     return (
         <form className="mt-12 mb-10 flex gap-4 flex-col" action={(formData: FormData) => { eventProposalAction(formData) }}>

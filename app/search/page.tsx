@@ -4,6 +4,7 @@ import { createSearchParamsCache, parseAsInteger, parseAsString } from "nuqs/ser
 import { Suspense } from "react";
 import { prisma } from "../layout";
 
+// Create a cache for search parameters
 const searchParamsCache = createSearchParamsCache({
     q: parseAsString.withDefault('').withOptions({
         clearOnDefault: true,
@@ -11,12 +12,25 @@ const searchParamsCache = createSearchParamsCache({
     page: parseAsInteger.withDefault(1)
 })
 
+/**
+ * Props for the SearchPage component
+ */
 export type SearchPageProps = {
+    searchParams: {
+        q: string;
+        page: string;
+    };
 }
 
-export default async function SearchPage({ searchParams }: { searchParams: { q: string, page: string } }) {
+/**
+ * Renders the search page.
+ * @param searchParams - The search parameters.
+ * @returns The rendered search page.
+ */
+export default async function SearchPage({ searchParams }: SearchPageProps) {
     const { q, page } = searchParamsCache.parse(searchParams);
 
+    // Get the total number of articles matching the search query
     const totalArticles = await prisma.article.count({
         where: {
             title: {
@@ -24,6 +38,8 @@ export default async function SearchPage({ searchParams }: { searchParams: { q: 
             }
         }
     });
+
+    // Get the filtered articles based on the search query and pagination
     const filteredArticles = await prisma.article.findMany({
         where: {
             title: {

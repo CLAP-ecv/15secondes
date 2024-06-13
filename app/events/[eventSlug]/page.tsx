@@ -1,4 +1,4 @@
-import { prisma } from "@/app/layout"
+import { prisma } from "@/app/layout";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/src/components/ui/breadcrumb";
 import { Button } from "@/src/components/ui/button";
 import { Loader } from "@/src/components/ui/loader";
@@ -6,23 +6,36 @@ import { BookmarkIcon, Share1Icon } from "@radix-ui/react-icons";
 import dayjs from "dayjs";
 import Image from "next/image";
 import { Suspense } from "react";
-import "dayjs/locale/fr"
+import "dayjs/locale/fr";
 import Link from "next/link";
 import { EventList } from "@/src/components/Event/EventList";
 import type { Event } from "@prisma/client";
 
 dayjs.locale("fr");
 
-export default async function EventDetailsPage({ params: { eventSlug } }: { params: { eventSlug: string } }) {
+/**
+ * Renders the event details page.
+ * @param {Object} props - The component props.
+ * @param {Object} props.params - The parameters object.
+ * @param {string} props.params.eventSlug - The slug of the event.
+ * @returns {JSX.Element} The event details page.
+ */
+export default async function EventDetailsPage({ params: { eventSlug } }: { params: { eventSlug: string } }): Promise<JSX.Element> {
 
     return (
         <Suspense fallback={<Loader />}>
             <Event eventSlug={eventSlug} />
         </Suspense>
-    )
+    );
 }
 
-async function Event({ eventSlug }: any) {
+/**
+ * Renders the event details.
+ * @param {Object} props - The component props.
+ * @param {string} props.eventSlug - The slug of the event.
+ * @returns {JSX.Element} The event details.
+ */
+async function Event({ eventSlug }: any): Promise<JSX.Element> {
     const event = await prisma.event.findFirst({
         where: {
             slug: eventSlug
@@ -43,7 +56,7 @@ async function Event({ eventSlug }: any) {
     }
 
     if (!event) {
-        return <div>Event not found</div>
+        return <div>Event not found</div>;
     }
 
     return (
@@ -133,5 +146,5 @@ async function Event({ eventSlug }: any) {
                 />
             </section>
         </main>
-    )
+    );
 }
