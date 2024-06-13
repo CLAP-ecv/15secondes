@@ -3,7 +3,7 @@ import { XMLParser } from "fast-xml-parser";
 
 export async function GET(request: Request) {
 
-    const xmlData = await fetch('https://www.20minutes.tv/sitemap-video-04-2024.xml');
+    const xmlData = await fetch('https://www.20minutes.tv/sitemap-video-06-2024.xml');
     const xmlText = await xmlData.text();   
 
     const parser = new XMLParser();
