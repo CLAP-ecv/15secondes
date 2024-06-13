@@ -93,6 +93,22 @@ export default async function Home() {
           </li>
         </ul>
       </section>
+      <section className="p-5 flex flex-col gap-6">
+        <h1 className="text-black font-bold text-xl">L'info en Ile-de-France</h1>
+        <Suspense fallback={<Loader />}>
+          <ArticleVideoCard variant="large" textColor="black" article={newArticles[0]} />
+          {
+            newArticles.slice(1).map((article) => (
+              <ArticleVideoCard key={article.id} variant="small" textColor="black" article={article} />
+            ))
+          }
+        </Suspense>
+        <Button asChild className="self-center bg-black/90 text-white" size="lg">
+          <Link href={"/search"}>
+            Toutes les vidéos
+          </Link>
+        </Button>
+      </section>
     </main>
   );
 }

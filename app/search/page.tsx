@@ -52,7 +52,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
     return (
         <main className="p-5">
-            <h1 className="font-bold text-lg">Résultat(s) de recherche pour : <br /><q>{searchParams.q}</q></h1>
+            {searchParams.q &&
+                <h1 className="font-bold text-lg">Résultat(s) de recherche pour : <br /><q>{searchParams.q}</q></h1>
+            }
             <ul className="space-y-5">
                 <Suspense fallback={"Chargement ..."}>
                     {filteredArticles.map((article) => (
