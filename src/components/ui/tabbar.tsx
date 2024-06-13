@@ -54,7 +54,7 @@ const menuLinks = [
         ]
     },
     {
-        label: "Emission",
+        label: "Emissions",
         children: [
             {
                 label: "L'info en Ile-de-France",
@@ -91,7 +91,7 @@ export const Tabbar = (props: TabbarProps) => {
         {
             href: "/",
             icon: TVIcon,
-            label: "Emission"
+            label: "Emissions"
         },
         {
             href: `/agenda?month=${thisMonth}`,
